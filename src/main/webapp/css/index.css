@@ -78,14 +78,131 @@ header{
     color: aliceblue;
     scale: 1.2;
 }
-.category-container{
+.menu-container{
     width: 1280px;
     margin-top: 30px;
     height: 30px;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 40px;
     transition: font-weight 1s;
 }
-.category-container h6:hover{
+.menu-container h6:hover{
     font-size: 1.05rem;
     font-weight: bold;
 }
+main{
+    width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}
+main>div{
+    width: 1200px;
+    justify-content: space-between;
+
+}
+.catetory_container{
+    width: 1000px;
+    justify-content: space-around;
+}
+main .category{
+
+    width: 140px;
+    height: 200px;
+    text-align: center;
+    flex-direction: column;
+
+}
+.category .image-container{
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+.category .image-container:hover{
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+}
+.category h5{
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 220px;
+
+
+}
+.item_image{
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    transition: scale 0.3s;
+}
+.item_image:hover{
+    scale: 1.1;
+}
+.item h6{
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+.item .bi{
+    color: #ff523b;
+}
+.favorite-cont{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
+    transition: box-shadow 0.4s;
+
+}
+.favorite-cont:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+}
+footer{
+    margin-top: 40px;
+    width: auto;
+    height: 200px;
+    border-top: 2px solid rgba(117,50,249,255);
+
+}
+.footer-row{
+
+    width: 1200px;
+    padding-bottom: 20px;
+    margin:0 auto;
+}
+footer h5{
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+footer h5{
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}footer h6{
+
+     font-size: 0.9rem;
+ }
+ footer h4:hover{
+     color: blue;
+ }
+
+.bi-facebook{
+    color: blue;
+    scale: 1.7;
+}
+.footer-row{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.51);
+}
+
