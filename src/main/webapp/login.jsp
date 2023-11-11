@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<form action="" class="mt-5 p-5 d-flex gap-2" >
+<form action="login" method="POST" class="mt-5 p-5 d-flex gap-2" >
   <h2 class="fw-bolder align-self-center">Login</h2>
   <div class="mb-3">
     <label for="email" class="form-label">Username</label>
@@ -60,6 +60,26 @@
   </div>
   <h5 class="align-self-center fw-bold"><a href="signup.jsp">SIGN UP</a></h5>
 </form>
+<c:if test="${error or denied or param.get('created')}">
+  <div class="position-fixed toast show align-items-center ${(error or denied)? 'text-bg-danger':'text-bg-success'} border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <c:choose>
+          <c:when test = "${error}">
+            Something went wrong, please try again.
+          </c:when>
+          <c:when test = "${denied}">
+            Invalid login credential, please try again
+          </c:when>
+          <c:when test = "${param.get('created')}">
+            Login Success!
+          </c:when>
+        </c:choose>
 
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</c:if>
 </body>
 </html>
