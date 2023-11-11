@@ -1,5 +1,6 @@
 package lk.ijse.dep11.web;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletException;
@@ -45,7 +46,7 @@ public class SignupServlet extends HttpServlet {
                 PreparedStatement stm = connection.prepareStatement("INSERT INTO user (userid, password, first_name, username) VALUES (?,?,?,?)");
                 stm.setString(1,"D"+id);
                 stm.setString(4,email);
-                stm.setString(2,password);
+                stm.setString(2, DigestUtils.sha256Hex(password));
                 stm.setString(3,name);
                 stm.executeUpdate();
                 req.setAttribute("created",true);

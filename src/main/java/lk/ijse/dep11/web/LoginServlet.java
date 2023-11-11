@@ -1,5 +1,6 @@
 package lk.ijse.dep11.web;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             stm.setString(1,email);
            ResultSet rst = stm.executeQuery();
             if(rst.next()){
-                if(rst.getString("password").equals(password)){
+                if(rst.getString("password").equals(DigestUtils.sha256Hex(password))){
                     HttpSession session = req.getSession();
                     if(remember!=null){
                         String header = resp.getHeader("Set-Cookie");

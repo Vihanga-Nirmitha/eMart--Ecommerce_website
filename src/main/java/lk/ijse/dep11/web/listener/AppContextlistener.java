@@ -5,12 +5,16 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.File;
 import java.sql.SQLException;
 
 @WebListener
 public class AppContextlistener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce){
+
+        String appPath = sce.getServletContext().getRealPath("/");
+        new File(appPath, "uploads").mkdir();
         BasicDataSource pool = new BasicDataSource();
         pool.setDriverClassName("com.mysql.cj.jdbc.Driver");
         pool.setUsername("root");
