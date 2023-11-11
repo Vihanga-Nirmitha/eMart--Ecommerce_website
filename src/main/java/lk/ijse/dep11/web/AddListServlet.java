@@ -24,8 +24,9 @@ import java.util.UUID;
 public class AddListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String[] categorylist = {"Earohones","Headset","Smart Watch","Vr Box","Power Bank"};
         String title =req.getParameter("title");
-        String category =req.getParameter("inlineRadioOptions");
+        String category =categorylist[Integer.parseInt(req.getParameter("inlineRadioOptions").substring(6,req.getParameter("inlineRadioOptions").length()))-1] ;
         String brand =req.getParameter("brand");
         String model =req.getParameter("model");
         String price =req.getParameter("price");
@@ -85,6 +86,6 @@ public class AddListServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        resp.sendRedirect("/app/list.jsp");
     }
 }

@@ -17,7 +17,7 @@
     <form action="list" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title">
+            <input required type="text" class="form-control" name="title" id="title">
         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category1" value="option1">
@@ -41,43 +41,43 @@
                         </div>
         <div class="mb-3">
             <label for="brand" class="form-label">Brand</label>
-            <input type="text" name="brand" class="form-control" id="brand">
+            <input required type="text" name="brand" class="form-control" id="brand">
         </div>
         <div class="mb-3">
             <label for="model" class="form-label">Model</label>
-            <input type="text" name="model" class="form-control" id="model">
+            <input required type="text" name="model" class="form-control" id="model">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="text" name="price" class="form-control" id="price">
+            <input required pattern="\'$'\d+\.\d\d" type="text" name="price" class="form-control" id="price">
         </div>
         <div class="mb-3">
             <label for="qty" class="form-label">Available quantity</label>
-            <input type="text" name="qty" class="form-control" id="qty">
+            <input required  pattern="^[0-9]+$" type="text" name="qty" class="form-control" id="qty">
         </div>
         <div class="mb-3">
             <label for="image1" class="form-label">Choose an image</label>
-            <input class="form-control" name="image1" type="file" id="image1"  accept="image/*" >
+            <input required class="form-control" name="image1" type="file" id="image1"  accept="image/*" >
         </div>
         <div class="mb-3">
             <label for="image2" class="form-label">Choose an image</label>
-            <input class="form-control" name="image2" type="file" id="image2"  accept="image/*" >
+            <input required class="form-control" name="image2" type="file" id="image2"  accept="image/*" >
         </div>
         <div class="mb-3">
             <label for="image3" class="form-label">Choose an image</label>
-            <input class="form-control" name="image3" type="file" id="image3"  accept="image/*" >
+            <input required class="form-control" name="image3" type="file" id="image3"  accept="image/*" >
         </div>
         <div class="mb-3">
             <label for="image4" class="form-label">Choose an image</label>
-            <input class="form-control" name="image4" type="file" id="image4"  accept="image/*" >
+            <input required class="form-control" name="image4" type="file" id="image4"  accept="image/*" >
         </div>
         <div class="mb-3">
             <label for="image5" class="form-label">Choose an image</label>
-            <input class="form-control" name="image5" type="file" id="image5"  accept="image/*" >
+            <input required class="form-control" name="image5" type="file" id="image5"  accept="image/*" >
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+            <textarea required class="form-control" name="description" id="description" rows="5"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
