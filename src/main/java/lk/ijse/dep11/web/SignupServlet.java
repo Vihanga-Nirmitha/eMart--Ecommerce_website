@@ -10,10 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/signup.jsp").forward(req,resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -31,8 +37,13 @@ public class SignupServlet extends HttpServlet {
                     getServletContext().getRequestDispatcher("/signup.jsp").forward(req,resp);
                     return;
                 }
+                PreparedStatement countstm = connection.prepareStatement("SELECT COUNT(*) AS row_count FROM user");
+                ResultSet rstcount = countstm.executeQuery();
+                rstcount.next();
+                int count = 1+ Integer.valueOf(rstcount.getString("row_count"));
+                String id = String.format("%05d",count);
                 PreparedStatement stm = connection.prepareStatement("INSERT INTO user (userid, password, first_name, username) VALUES (?,?,?,?)");
-                stm.setString(1,"D00001");
+                stm.setString(1,"D"+id);
                 stm.setString(4,email);
                 stm.setString(2,password);
                 stm.setString(3,name);

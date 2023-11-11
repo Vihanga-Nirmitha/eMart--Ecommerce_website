@@ -21,19 +21,19 @@
   <h2 class="fw-bolder align-self-center">Create New Account</h2>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input required type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Type your username">
+    <input required type="text" name="name" value="${param.get("fullname")}" pattern="^[A-Za-z]+$" class="form-control" id="name" >
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Username</label>
-    <input required type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
+    <input required value="${param.get("email")}" type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input required type="password" name="password"class="form-control" id="password" placeholder="Type your password">
+    <input required type="password" name="password"class="form-control" id="password">
   </div>
   <div class="mb-3">
     <label for="confirm-password" class="form-label">Password</label>
-    <input required type="password" name="conf-password"class="form-control" id="confirm-password" placeholder="Type your password">
+    <input required type="password" name="conf-password" class="form-control ${mismatch? 'is-invalid': ''}" id="confirm-password" placeholder="Type your password">
   </div>
   <div class="d-flex justify-content-between">
     <div class="mb-3 text-center d-flex align-self-start" >

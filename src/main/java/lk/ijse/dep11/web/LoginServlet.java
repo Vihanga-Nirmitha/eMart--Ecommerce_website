@@ -14,6 +14,11 @@ import java.sql.SQLException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -39,12 +44,12 @@ public class LoginServlet extends HttpServlet {
 
                 }else{
                     req.setAttribute("denied", true);
-                    getServletContext().getRequestDispatcher("/signin.jsp").forward(req,resp);
+                    getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
                 }
 
             }else {
                 req.setAttribute("denied", true);
-                getServletContext().getRequestDispatcher("/signin.jsp").forward(req,resp);
+                getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

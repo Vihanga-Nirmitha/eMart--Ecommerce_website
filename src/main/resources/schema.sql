@@ -7,3 +7,4 @@ CREATE TABLE user(
 INSERT INTO user (userid, username, password, first_name) VALUES ('D000002','vihanganirmitha200@gmail.com','aaaaa','vihanga');
 ALTER table user DROP COLUMN username;
 ALTER TABLE user ADD COLUMN username VARCHAR(100) NOT NULL ;
+SELECT COUNT(*) AS row_count FROM user;
