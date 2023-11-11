@@ -32,10 +32,10 @@ form{
     width: auto;
     border-radius: 25px;
     background:linear-gradient(to right, rgb(117, 50, 249), rgb(254, 180, 123));
-    transition: background 0.4s ease;
+    transition: background 2s ease;
 }
 .login-btn:hover{
-    background:linear-gradient(to left, rgb(117, 50, 249), rgb(254, 180, 123));
+    background:linear-gradient(to right, rgb(254, 180, 123), rgb(117, 50, 249));
 }
 .login-btn h5{
     color: white;
@@ -63,5 +63,13 @@ form>h5{
 }
 form>h5:hover{
     color: #555555;
+    cursor: pointer;
+}
+.already h5{
+    align-self: center;
+    font-size: 1rem;
+}
+.already h5:hover{
+    color:#555555;
     cursor: pointer;
 }
