@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
 
 </head>
 <body>
-<form action="" class="mt-5 p-5 d-flex gap-2" >
+<form action="signup" method="POST" class="mt-5 p-5 d-flex gap-2" >
   <h2 class="fw-bolder align-self-center">Create New Account</h2>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
@@ -23,7 +25,7 @@
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Username</label>
-    <input required type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Type your username">
+    <input required type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
@@ -49,10 +51,29 @@
     <label  >
       Already have an Account ?
     </label>
-    <h5 class="align-self-center fw-bold mt-1">Login</h5>
+    <h5 class="align-self-center fw-bold mt-1"><a href="login.jsp">Login</a></h5>
   </div>
 
 </form>
-
+<c:if test="${mismatch || error || duplicateemail}">
+  <div class="position-fixed toast show align-items-center text-bg-warning border-0 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <c:choose>
+          <c:when test="${mismatch}">
+            The entered passwords are not matched
+          </c:when>
+          <c:when test="${error}">
+            Something went wrong, try again!
+          </c:when>
+          <c:when test="${duplicateemail}">
+            The email already exists!
+          </c:when>
+        </c:choose>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</c:if>
 </body>
 </html>

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +58,7 @@
       Or Sign up Using
     </label>
   </div>
-  <h5 class="align-self-center fw-bold">SIGN UP</h5>
+  <h5 class="align-self-center fw-bold"><a href="signup.jsp">SIGN UP</a></h5>
 </form>
 
 </body>

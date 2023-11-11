@@ -21,22 +21,36 @@ public class SignupServlet extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
         String conf_password = req.getParameter("conf-password");
-
         if(password.equals(conf_password)){
             BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
-
             try(Connection connection = pool.getConnection()){
                 PreparedStatement existstm = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
                 existstm.setString(1,email);
                 if(existstm.executeQuery().next()){
                     req.setAttribute("duplicateemail",true);
+                    getServletContext().getRequestDispatcher("/signup.jsp").forward(req,resp);
+                    return;
                 }
+                PreparedStatement stm = connection.prepareStatement("INSERT INTO user (userid, password, first_name, username) VALUES (?,?,?,?)");
+                stm.setString(1,"D00001");
+                stm.setString(4,email);
+                stm.setString(2,password);
+                stm.setString(3,name);
+                stm.executeUpdate();
+                req.setAttribute("created",true);
+                getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
+
+
 
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                req.setAttribute("error",false);
+                getServletContext().getRequestDispatcher("/signup.jsp").forward(req,resp);
             }
+            req.setAttribute("created",true);
+            getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
         }else{
-            //notequals
+            req.setAttribute("mismatch",true);
+            getServletContext().getRequestDispatcher("/signup.jsp").forward(req,resp);
         }
 
     }
