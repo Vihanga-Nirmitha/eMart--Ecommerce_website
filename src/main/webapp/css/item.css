@@ -5,8 +5,6 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 main{
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     padding-top: 50px;
     width:  1200px;
@@ -14,6 +12,8 @@ main{
 .image-container{
     display: flex;
     flex-direction: column;
+    padding: 30px;
+    border: 1px solid #e5e5e5;
 }
 .carousel{
     width: 600px;
@@ -37,5 +37,30 @@ overflow: hidden;
     border-radius: 25px;
     background-color: #1da1f2;
 }
-
-
+.bot-border{
+    border-bottom: 1px solid #e5e5e5;
+}
+.rest h2{
+    font-weight: 800;
+}
+.rest h3{
+    font-weight: 700;
+    color: #ea4335;
+}
+.btn-list button:nth-child(2){
+    background-color: #1da1f2;
+}
+.btn-list button:nth-child(2):hover{
+    background-color: #1d4ff2;
+}
+.rest input{
+    width: 50px;
+}
+.spacer{
+    width: 22px;
+}
+.btn-list button{
+    width: 300px;
+    height: 40px;
+    border-radius: 24px;
+}
