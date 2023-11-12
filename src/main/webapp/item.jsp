@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,49 +17,26 @@
 
 </head>
 <body>
-<header>
-    <div class="container-lg search-container d-flex align-items-center mt-3">
-        <div><img src="image/logo.png" alt="" width="200px"></div>
-        <div class="mainsearch d-flex">
-            <input type="text" class="flex-grow-1 border border-0 ">
-            <div class="search">
-                <i class="bi bi-search"></i>
-            </div>
-        </div>
-        <div class="d-flex signin-container">
-            <div class="signin rounded-pill">signin</div>
-            <div class="favorite rounded-circle"><i class="bi bi-heart"></i></div>
-            <div class="cart rounded-circle"><i class="bi bi-cart3"></i></div>
-        </div>
-    </div>
-    <div class="menu-container d-flex  ">
-        <div><h6>Home</h6></div>
-        <div><h6>Products</h6></div>
-        <div><h6>About</h6></div>
-        <div><h6>Contact Us</h6></div>
-        <div><h6>Account</h6></div>
-
-    </div>
-</header>
+<%@include file="WEB-INF/partials/header.jsp"%>
     <main class="d-flex flex-row align-items-start gap-5 justify-content-around">
         <div class="image-container">
                 <div id="corouselindicator" class="carousel slide carousel">
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="image/vr.jpg" class="d-block w-100"  alt="...">
+                            <img src="${empty preview.path1 ? 'img/avatar.png': preview.path1}" class="d-block w-100"  alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="image/headset.jpg" class="d-block w-100" alt="...">
+                            <img src="${empty preview.path2 ? 'img/avatar.png': preview.path2}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="image/smart-watch.jpg" class="d-block w-100" alt="...">
+                            <img src="${empty preview.path3 ? 'img/avatar.png': preview.path3}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="image/logo.png" class="d-block w-100" w alt="...">
+                            <img src="${empty preview.path4 ? 'img/avatar.png': preview.path4}" class="d-block w-100" w alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="image/earbuds.jpg" class="d-block w-100" alt="...">
+                            <img src="${empty preview.path5 ? 'img/avatar.png': preview.path5}" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#corouselindicator" data-bs-slide="prev">
@@ -72,36 +50,36 @@
                     <div class="carousel-indicators d-flex">
 
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1">
-                            <div class="img-btn"><img src="image/vr.jpg" class="d-block w-100" ></div>
+                            <div class="img-btn"><img src="${empty preview.path1 ? 'img/avatar.png': preview.path1}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="1" aria-label="Slide 2">
-                            <div class="img-btn"><img src="image/headset.jpg" class="d-block w-100" ></div>
+                            <div class="img-btn"><img src="${empty preview.path2 ? 'img/avatar.png': preview.path2}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="2" aria-label="Slide 3">
-                            <div class="img-btn"><img src="image/smart-watch.jpg" class="d-block w-100" ></div>
+                            <div class="img-btn"><img src="${empty preview.path3 ? 'img/avatar.png': preview.path3}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="3" aria-label="Slide 4">
-                            <div class="img-btn"><img src="image/logo.png" class="d-block w-100" ></div>
+                            <div class="img-btn"><img src="${empty preview.path4 ? 'img/avatar.png': preview.path4}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="4" aria-label="Slide 5">
-                            <div class="img-btn"><img src="image/earbuds.jpg" class="d-block w-100" ></div>
+                            <div class="img-btn"><img src="${empty preview.path5 ? 'img/avatar.png': preview.path5}" class="d-block w-100" ></div>
                         </button>
                     </div>
                 </div>
         </div>
         <div class="d-flex flex-column rest">
 
-               <div class="fw-bold bot-border"><h2><p>Brand Model Title</p></h2></div>
+               <div class="fw-bold bot-border"><h2><p>${preview.brand} ${preview.model} ${preview.title}</p></h2></div>
                 <div class="d-flex mt-5 mb-3 gap-3 align-items-center">
                     <label for="qty" class="form-label">Quantity: </label>
                    <input required pattern="^[0-9]+$" type="text" name="qty"class="form-control" id="qty"></span>
-                    <h6>7 Available / <span class="sold"> 12 Sold</span></h6>
+                    <h6>${preview.qty} Available / <span class="sold"> ${preview.sold} Sold</span></h6>
                 </div>
 
                 <div class ="d-flex gap-1 align-items-center bot-border">
                     <div class="spacer"></div>
                     <div>Price:</div>
-                    <h3 class="m-3">$34.45</h3>
+                    <h3 class="m-3">${preview.price}</h3>
                     <div class="mt-2"><h6>was</h6></div>
                     <div class="mt-2 text-decoration-line-through"><h5>$50.00</h5></div>
                 </div>
@@ -114,6 +92,6 @@
 
         </div>
     </main>
-
+<%@include file="WEB-INF/partials/footer.jsp"%>
 </body>
 </html>
