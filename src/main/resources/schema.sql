@@ -37,3 +37,4 @@ ALTER TABLE user ADD COLUMN username VARCHAR(100) NOT NULL ;
 SELECT COUNT(*) AS row_count FROM user;
 ALTER  TABLE  item MODIFY COLUMN  rating DECIMAL(3,1) DEFAULT 5 ;
 SELECT * FROM item WHERE price < 20.00 AND price > 5.00 AND (category = 'Electronics' OR category = 'Sports' ) ORDER BY price DESC;
+SELECT * FROM item ORDER BY date DESC;

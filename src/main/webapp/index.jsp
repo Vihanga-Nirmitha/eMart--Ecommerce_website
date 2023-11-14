@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,40 +18,50 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+
 <%@include file="WEB-INF/partials/header.jsp"%>
     <main class="d-flex">
         <div class="catetory_container d-flex mt-5">
-            <div class="category d-flex">
-                <div class="image-container">
-                    <img src="image/earbuds.jpg" alt="" width="140px">
+            <a class="text-decoration-none link-dark" href="/app/products?category1=category1&max-price=&min-price=">
+                <div class="category d-flex">
+                    <div class="image-container">
+                        <img src="image/earbuds.jpg" alt="" width="140px">
+                    </div>
+                    <div><h5>Electronics</h5></div>
                 </div>
-                <div><h5>Earphones Wireless</h5></div>
-            </div>
+            </a>
+            <a class="text-decoration-none link-dark" href="/app/products?category2=category2&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
                     <img src="image/vr.jpg" alt="" width="140px">
                 </div>
-                <div><h5>Headset</h5></div>
+                <div><h5>Sports</h5></div>
             </div>
+            </a>
+            <a class="text-decoration-none link-dark" href="/app/products?category3=category3&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
                     <img src="image/smart-watch.jpg" alt="" width="140px">
                 </div>
-                <div><h5>Smart Watch</h5></div>
+                <div><h5>Fashion</h5></div>
             </div>
+            </a>
+            <a class="text-decoration-none link-dark" href="/app/products?category4=category4&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
                     <img src="image/vr.jpg" alt="" width="140px">
                 </div>
-                <div><h5>Vr Box</h5></div>
+                <div><h5>Home & Garden</h5></div>
             </div>
+            </a>
+            <a class="text-decoration-none link-dark" href="/app/products?category5=category5&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
                     <img src="image/earbuds.jpg" alt="" width="140px">
                 </div>
-                <h5>Earphones Wireless</h5>
+                <h5>Kid's Item</h5>
             </div>
-
+            </a>
         </div>
         <h5 class="fw-bold align-self-start mt-5">Recently Viewed & more</h5>
         <div class="recent-container d-flex mt-3">
@@ -132,159 +143,49 @@
         </div>
         <h5 class="fw-bold align-self-start mt-5">Featured Products</h5>
         <div class="recent-container d-flex mt-3">
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
+            <c:forEach var="item" items="${featuredList}">
+                <div class="item">
+                    <a class="text-decoration-none link-dark"  href="/app/item?itemid=${item.itemid}">
+                        <div class="item_image mb-2">
+                            <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
+                            <img src=${empty item.path ? 'img/avatar.png': item.path} alt="" width="220px">
+                        </div>
+                        <h6>${item.title}</h6>
+                    </a>
+                    <div class="d-flex">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <h6>$${item.price}</h6>
                 </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
+            </c:forEach>
+
         </div>
         <h5 class="fw-bold align-self-start mt-5">Latest Products</h5>
         <div class="recent-container d-flex mt-3">
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
+            <c:forEach var="item" items="${latestList}">
+                <div class="item">
+                    <a class="text-decoration-none link-dark"  href="/app/item?itemid=${item.itemid}">
+                        <div class="item_image mb-2">
+                            <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
+                            <img src=${empty item.path ? 'img/avatar.png': item.path} alt="" width="220px">
+                        </div>
+                        <h6>${item.title}</h6>
+                    </a>
+                    <div class="d-flex">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <h6>$${item.price}</h6>
                 </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
-            <div class="item">
-                <div class="item_image mb-2">
-                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                    <img src="image/vr.jpg" alt="" width="220px">
-                </div>
-                <h6>Black Beast Wireless</h6>
-                <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                </div>
-                <h6>$20.00</h6>
-            </div>
+            </c:forEach>
+
         </div>
     </main>
 <%@include file="WEB-INF/partials/footer.jsp"%>

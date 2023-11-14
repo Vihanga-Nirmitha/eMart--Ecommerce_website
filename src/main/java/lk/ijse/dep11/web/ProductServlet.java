@@ -30,7 +30,14 @@ public class ProductServlet extends HttpServlet {
         String category5 = (req.getParameter("category5")!=null)? "Kid's Items": "";
         String min_price = (req.getParameter("min-price").equals(""))? "0": req.getParameter("min-price");
         String max_price = (req.getParameter("max-price").equals(""))? "100000": req.getParameter("max-price");
-
+        System.out.println(req.getParameter("sort"));
+         if((category1.equals(category2)) && (category1.equals(category3)) && (category1.equals(category4)) && (category1.equals(category5))){
+             category1 = "Electronics";
+             category2 ="Sports";
+             category3="Fashion";
+             category4="Home & Garden";
+             category5="Kid's Items";
+         }
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
         try( Connection connection = pool.getConnection()) {
             PreparedStatement stm = connection.prepareStatement("SELECT * FROM item WHERE price < ? AND price > ? AND (category = ? OR category = ? OR category = ? OR category = ? OR category = ? )");

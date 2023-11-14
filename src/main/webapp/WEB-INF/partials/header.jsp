@@ -14,8 +14,9 @@
         </div>
     </div>
     <div class="menu-container d-flex  ">
-        <div><h6>Home</h6></div>
-        <div><h6>Products</h6></div>
+
+        <div><a class="text-decoration-none link-dark" href="/app/"><h6>Home</h6></a></div>
+        <div><a class="text-decoration-none link-dark" href="/app/products?category1=category1&category2=category2&category3=category3&category4=category4&category5=category5&max-price=&min-price="><h6>Products</h6></a></div>
         <div><h6>About</h6></div>
         <div><h6>Contact Us</h6></div>
         <div><h6>Account</h6></div>

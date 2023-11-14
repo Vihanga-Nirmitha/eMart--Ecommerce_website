@@ -21,50 +21,53 @@
         <form action="products" method="GET" class="mt-5 d-flex flex-column align-self-start filter">
             <div class = "bot-border p-3"><h5 class="fw-bold">Categories</h5>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="category1" name="category1" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="category1" name="category1" id="flexCheckDefault" ${param.get("category1").equals("category1")? "checked": ""}>
                 <label class="form-check-label" for="flexCheckDefault">
                     Electronics
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="category2" name="category2" id="flexCheckDefault2">
+                <input class="form-check-input" type="checkbox" value="category2" name="category2" id="flexCheckDefault2" ${param.get("category2").equals("category2")? "checked": ""}>
                 <label class="form-check-label" for="flexCheckDefault2">
                     Sports
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="category3" name="category3" id="flexCheckDefault3">
+                <input class="form-check-input" type="checkbox" value="category3" name="category3" id="flexCheckDefault3" ${param.get("category3").equals("category3")? "checked": ""}>
                 <label class="form-check-label" for="flexCheckDefault3">
                     Fashion
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="category4" name="category4" id="flexCheckDefault4">
+                <input class="form-check-input" type="checkbox" value="category4" name="category4" id="flexCheckDefault4" ${param.get("category4").equals("category4")? "checked": ""}>
                 <label class="form-check-label" for="flexCheckDefault4">
                     Home & Garden
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="category5" name="category5" id="flexCheckDefault5">
+                <input class="form-check-input" type="checkbox" value="category5" name="category5" id="flexCheckDefault5" ${param.get("category5").equals("category5")? "checked": ""}>
                 <label class="form-check-label" for="flexCheckDefault5">
                     Kid's Items
                 </label>
             </div>
             </div>
-            <div class="price mt-3 align-self-end" >Max Price: $<input type="text" name="max-price" pattern="^[0-9]+$">.00</div>
-            <div class="price bot-border align-self-end" >Min Price: $<input type="text" name="min-price" pattern="^[0-9]+$">.00</div>
+            <div class="price mt-3 align-self-end" >Max Price: $<input type="text" value="${param.get("max-price")}" name="max-price" pattern="^[0-9]+$">.00</div>
+            <div class="price bot-border align-self-end" >Min Price: $<input type="text" value="${param.get("min-price")}" name="min-price" pattern="^[0-9]+$">.00</div>
             <button class="btn btn-primary mt-3 align-self-center" type="submit">Apply</button>
         </form>
         <div class="content align-self-start flex-grow-1 d-flex flex-column">
             <div class="dropdown d-flex flex-row-reverse justify-content-between">
-                <form action="">
+                <form action="products" method="GET">
                     <select class="form-select sort" aria-label="Default select example">
-                        <option selected>Best match</option>
-                        <option value="1">Newest</option>
-                        <option value="2">Oldest</option>
-                        <option value="3">Price :low first</option>
-                        <option value="4">Price :high first</option>
-                        <option value="5">Most Popular</option>
+                        <button type="submit">
+                            <option selected>Best match</option>
+                            <option value="1">Newest</option>
+                            <option value="2">Oldest</option>
+                            <option value="3">Price :low first</option>
+                            <option value="4">Price :high first</option>
+                            <option value="5">Most Popular</option>
+                        </button>
+
                     </select>
                 </form>
             </div>
@@ -73,11 +76,13 @@
                     <c:forEach var="item" items="${itemList}">
                     <div class="col-3">
                         <div class="item">
-                            <div class="item_image mb-2">
-                                <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
-                                <img src=${empty item.path ? 'img/avatar.png': item.path} alt="" width="220px">
-                            </div>
-                            <h6>${item.title}</h6>
+                            <a class="text-decoration-none link-dark"  href="/app/item?itemid=${item.itemid}">
+                                <div class="item_image mb-2">
+                                    <div class="favorite-cont m-2"><i class="bi bi-heart mt-1"></i></div>
+                                    <img src=${empty item.path ? 'img/avatar.png': item.path} alt="" width="220px">
+                                </div>
+                                <h6>${item.title}</h6>
+                            </a>
                             <div class="d-flex">
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
