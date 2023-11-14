@@ -18,9 +18,10 @@
 </head>
 <body>
 <%@include file="WEB-INF/partials/header.jsp"%>
-    <main class="d-flex flex-row align-items-start gap-5 justify-content-around">
+<main>
+    <div class="top-main d-flex flex-row align-items-start gap-5 justify-content-around">
         <div class="image-container">
-                <div id="corouselindicator" class="carousel slide carousel">
+                <div id="corouselindicator" class="carousel carousel-dark slide">
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -50,26 +51,21 @@
                     <div class="carousel-indicators d-flex">
 
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1">
-                            <div class="img-btn"><img src="${empty preview.path1 ? 'img/avatar.png': preview.path1}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="1" aria-label="Slide 2">
-                            <div class="img-btn"><img src="${empty preview.path2 ? 'img/avatar.png': preview.path2}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="2" aria-label="Slide 3">
-                            <div class="img-btn"><img src="${empty preview.path3 ? 'img/avatar.png': preview.path3}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="3" aria-label="Slide 4">
-                            <div class="img-btn"><img src="${empty preview.path4 ? 'img/avatar.png': preview.path4}" class="d-block w-100" ></div>
                         </button>
                         <button type="button" data-bs-target="#corouselindicator"  data-bs-slide-to="4" aria-label="Slide 5">
-                            <div class="img-btn"><img src="${empty preview.path5 ? 'img/avatar.png': preview.path5}" class="d-block w-100" ></div>
                         </button>
                     </div>
                 </div>
         </div>
         <div class="d-flex flex-column rest">
 
-               <div class="fw-bold bot-border"><h2><p>${preview.brand} ${preview.model} ${preview.title}</p></h2></div>
+               <div class="fw-bold bot-border mt-5"><h2><p>${preview.brand} ${preview.model} ${preview.title}</p></h2></div>
                 <div class="d-flex mt-5 mb-3 gap-3 align-items-center">
                     <label for="qty" class="form-label">Quantity: </label>
                    <input required pattern="^[0-9]+$" type="text" name="qty"class="form-control" id="qty"></span>
@@ -79,11 +75,11 @@
                 <div class ="d-flex gap-1 align-items-center bot-border">
                     <div class="spacer"></div>
                     <div>Price:</div>
-                    <h3 class="m-3">${preview.price}</h3>
+                    <h3 class="m-3">$${preview.price}</h3>
                     <div class="mt-2"><h6>was</h6></div>
-                    <div class="mt-2 text-decoration-line-through"><h5>$50.00</h5></div>
+                    <div class="mt-2 text-decoration-line-through"><h5>$${String.format("%.2f",preview.price*1.2)}</h5></div>
                 </div>
-            <div class="d-flex flex-column align-items-center gap-3 mt-4 pb-4 btn-list bot-border">
+            <div class="d-flex flex-column align-items-center gap-3 mt-5 pb-4 btn-list">
                 <button class="btn btn-primary" type="button">Buy it Now</button>
                 <button class="btn" type="button">Add to Cart</button>
                 <button class="btn btn-outline-info" type="button"><i class="bi bi-heart"></i> Add to Watch List</button>
@@ -91,7 +87,24 @@
 
 
         </div>
-    </main>
+    </div>
+    <div class="description mt-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Description</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Feedback</button>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active lh-lg pt-4" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">${preview.description}</div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+
+        </div>
+    </div>
+</main>
 <%@include file="WEB-INF/partials/footer.jsp"%>
 </body>
 </html>

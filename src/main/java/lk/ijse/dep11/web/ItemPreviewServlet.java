@@ -39,7 +39,8 @@ public class ItemPreviewServlet extends HttpServlet {
                 String path3 = rst.getString("image3");
                 String path4 = rst.getString("image4");
                 String path5 = rst.getString("image5");
-                preview = new Item(id,title,model,brand,price,qty,sold,date,rating,path1,path2,path3,path4,path5);
+                String description = rst.getString("description");
+                preview = new Item(id,title,model,brand,price,qty,sold,date,rating,path1,path2,path3,path4,path5,description);
             }else {
 
             }

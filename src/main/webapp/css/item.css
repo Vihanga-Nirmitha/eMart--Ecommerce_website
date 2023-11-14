@@ -4,7 +4,7 @@
 body{
     font-family: 'Nunito', sans-serif;
 }
-main{
+.top-main{
     justify-content: center;
     padding-top: 50px;
     width:  1200px;
@@ -27,8 +27,6 @@ background-color: rgba(85, 85, 85, 0.63);
 overflow: hidden;
 }
 .carousel-indicators{
-    gap: 80px;
-    padding-bottom: 70px;
     opacity: 100%;
 }
 .move{
@@ -63,4 +61,9 @@ overflow: hidden;
     width: 300px;
     height: 40px;
     border-radius: 24px;
+}
+.tab-border{
+    border-bottom: 1px solid black ;
+    border-left: 1px solid black ;
+    border-right: 1px solid black ;
 }

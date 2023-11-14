@@ -26,6 +26,7 @@ public class Item implements Serializable {
     private String path3;
     private String path4;
     private String path5;
+    private String description;
 
 
 
