@@ -24,7 +24,7 @@ import java.util.UUID;
 public class AddListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String[] categorylist = {"Earohones","Headset","Smart Watch","Vr Box","Power Bank"};
+        String[] categorylist = {"Electronics","Sports","Fashion","Home & Garden","Kid's Items"};
         String title =req.getParameter("title");
         String category =categorylist[Integer.parseInt(req.getParameter("inlineRadioOptions").substring(6,req.getParameter("inlineRadioOptions").length()))-1] ;
         String brand =req.getParameter("brand");

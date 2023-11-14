@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class ItemPreviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String itemid = "2";
+        String itemid = "3";
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
         try(Connection connection = pool.getConnection()) {
             Item preview = null;

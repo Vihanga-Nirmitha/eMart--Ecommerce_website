@@ -21,23 +21,23 @@
         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category1" value="option1">
-                            <label class="form-check-label" for="category1">Earphones </label>
+                            <label class="form-check-label" for="category1">Electronics </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category2" value="option2">
-                            <label class="form-check-label" for="category2">Headset</label>
+                            <label class="form-check-label" for="category2">Sports</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category3" value="option3">
-                            <label class="form-check-label" for="category3">Smart Watch</label>
+                            <label class="form-check-label" for="category3">Fashion</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category4" value="option2">
-                            <label class="form-check-label" for="category4">Vr Box</label>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category4" value="option4">
+                            <label class="form-check-label" for="category4">Home & Garden</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category5" value="option3">
-                            <label class="form-check-label" for="category5">Power Banks</label>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="category5" value="option5">
+                            <label class="form-check-label" for="category5">Kid's Items</label>
                         </div>
         <div class="mb-3">
             <label for="brand" class="form-label">Brand</label>
