@@ -67,3 +67,26 @@ overflow: hidden;
     border-left: 1px solid black ;
     border-right: 1px solid black ;
 }
+.rating h3,.rating h6{
+    color: rgba(85, 85, 85, 0.4);
+}
+.shine-star{
+  color: #faca51;
+}
+.bar{
+    position: relative;
+    height: 12px;
+    width: 150px;
+    background-color: rgba(152, 148, 148, 0.18);
+}
+.col-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+
+    background-color: #faca51;
+}
+.dark-star{
+    color:rgba(152, 148, 148, 0.18);
+}

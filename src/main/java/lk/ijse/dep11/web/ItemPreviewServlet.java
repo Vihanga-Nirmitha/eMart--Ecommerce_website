@@ -1,5 +1,6 @@
 package lk.ijse.dep11.web;
 
+import lk.ijse.dep11.web.tm.Feedback;
 import lk.ijse.dep11.web.tm.Item;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -13,11 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/item")
 public class ItemPreviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Feedback> feedbackList = new ArrayList<>();
         String itemid = req.getParameter("itemid");
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
         try(Connection connection = pool.getConnection()) {
@@ -48,7 +52,7 @@ public class ItemPreviewServlet extends HttpServlet {
             }
 
             req.setAttribute("preview",preview);
-            getServletContext().getRequestDispatcher("/item.jsp").forward(req, resp);
+//            getServletContext().getRequestDispatcher("/item.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -64,8 +68,26 @@ public class ItemPreviewServlet extends HttpServlet {
                 }
             }
             if(!sessionactive)doPost(req,resp);
-            System.out.println(req.getSession().getId());
-            stm.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try(Connection connection = pool.getConnection()) {
+            PreparedStatement stmfeed = connection.prepareStatement("SELECT * FROM (SELECT * FROM feedback WHERE itemid = ?) as f INNER JOIN user as u on f.userid = u.userid");
+            stmfeed.setString(1,itemid);
+            ResultSet rst = stmfeed.executeQuery();
+            while (rst.next()){
+
+                String feedback = rst.getString("feedbackid");
+                String itemId = rst.getString("itemid");
+                String username = rst.getString("first_name");
+                String comment = rst.getString("comment");
+                int rating = rst.getInt("rating");
+                Date date = rst.getDate("date");
+                feedbackList.add(new Feedback(feedback,itemid,username,comment,rating,date));
+
+            }
+            req.setAttribute("feedbackList",feedbackList);
+            getServletContext().getRequestDispatcher("/item.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

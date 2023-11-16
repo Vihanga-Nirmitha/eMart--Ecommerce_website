@@ -29,7 +29,6 @@ CREATE TABLE feedback(
     comment VARCHAR(500) NOT NULL ,
     rating int DEFAULT 5,
     date DATETIME NOT NULL ,
-    CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES user (userid),
     CONSTRAINT fk_itemid FOREIGN KEY (itemid) REFERENCES item (itemid)
 
  );
@@ -38,7 +37,7 @@ CREATE TABLE view(
         itemid int NOT NULL ,
         date DATETIME NOT NULL ,
         userid VARCHAR(20) NOT NULL ,
-        cokieid VARCHAR(300) NOT NULL
+        cokieid VARCHAR(300) NOT NULL,
         CONSTRAINT fk_item FOREIGN KEY (itemid) REFERENCES item (itemid)
 );
 INSERT INTO user (userid, username, password, first_name) VALUES ('D000002','vihanganirmitha200@gmail.com','aaaaa','vihanga');
@@ -52,3 +51,7 @@ SELECT * FROM item ORDER BY date DESC;
 ALTER TABLE view ADD COLUMN cokieid VARCHAR(300) NOT NULL ;
 SELECT * FROM view WHERE userid = 'D00001';
 SELECT * FROM item as i INNER JOIN (SELECT date,itemid FROM view WHERE userid = 'D00001') as v on v.itemid = i.itemid ORDER BY v.date DESC ;
+
+INSERT INTO feedback (userid, itemid, comment, rating, date) VALUES ('D00002','3','Fast Delivery, recommended!' , '5', LOCALTIME);
+SELECT * FROM feedback WHERE itemid = '3';
+SELECT * FROM (SELECT * FROM feedback WHERE itemid = '3') as f INNER JOIN user as u on f.userid = u.userid;
