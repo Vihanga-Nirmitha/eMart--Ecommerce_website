@@ -12,6 +12,7 @@ import java.io.IOException;
 public class LoginSignupIntersector extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+
         if(req.getSession(false) != null){
             res.sendRedirect(req.getContextPath());
         }else {

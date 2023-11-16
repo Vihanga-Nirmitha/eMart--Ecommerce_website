@@ -15,11 +15,14 @@ public class SecurityFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession(false);
+
         if(session != null){
             chain.doFilter(req,res);
         }else {
             res.sendRedirect(req.getContextPath()+"/login.jsp");
         }
+
+
 
 
     }

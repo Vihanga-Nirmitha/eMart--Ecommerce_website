@@ -1,6 +1,7 @@
 package lk.ijse.dep11.web;
 
 import lk.ijse.dep11.web.tm.Item;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.servlet.ServletException;
@@ -41,18 +42,50 @@ public class ItemPreviewServlet extends HttpServlet {
                 String path5 = rst.getString("image5");
                 String description = rst.getString("description");
                 preview = new Item(id,title,model,brand,price,qty,sold,date,rating,path1,path2,path3,path4,path5,description);
+
             }else {
 
             }
+
             req.setAttribute("preview",preview);
             getServletContext().getRequestDispatcher("/item.jsp").forward(req, resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        try(Connection connection = pool.getConnection()) {
+            PreparedStatement stm = connection.prepareStatement("SELECT cokieid FROM view WHERE itemid = ? AND  userid =?");
+            stm.setString(1,itemid);
+            stm.setString(2, (String) req.getSession().getAttribute("userid"));
+            ResultSet rst = stm.executeQuery();
+            boolean sessionactive =false;
+            while (rst.next()){
+                if(rst.getString("cokieid").equals(DigestUtils.sha256Hex(req.getSession().getId()))){
+                    sessionactive = true;
+                }
+            }
+            if(!sessionactive)doPost(req,resp);
+            System.out.println(req.getSession().getId());
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String itemid = req.getParameter("itemid");
+        BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
+        try(Connection connection = pool.getConnection()) {
+            PreparedStatement stm = connection.prepareStatement("INSERT INTO view (itemid, date, userid,cokieid) VALUES (?,?,?,?)");
+            stm.setString(1,itemid);
+            stm.setString(2,String.valueOf(LocalDateTime.now()));
+            stm.setString(3, (String) req.getSession().getAttribute("userid"));
+            stm.setString(4 , DigestUtils.sha256Hex(req.getSession().getId()));
+
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
