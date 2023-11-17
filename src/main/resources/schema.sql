@@ -55,3 +55,5 @@ SELECT * FROM item as i INNER JOIN (SELECT date,itemid FROM view WHERE userid = 
 INSERT INTO feedback (userid, itemid, comment, rating, date) VALUES ('D00001','18','Not Good!' , '3', LOCALTIME);
 SELECT * FROM feedback WHERE itemid = '3';
 SELECT * FROM (SELECT * FROM feedback WHERE itemid = '3') as f INNER JOIN user as u on f.userid = u.userid;
+
+SELECT * FROM item ORDER BY price ASC ;

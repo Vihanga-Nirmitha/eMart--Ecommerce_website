@@ -19,7 +19,7 @@
 <body>
 <%@include file="WEB-INF/partials/header.jsp"%>
     <main class="d-flex flex-row">
-        <form action="products" method="GET" class="mt-5 d-flex flex-column align-self-start filter">
+        <form action="products" method="GET" class="mt-5 d-flex flex-column align-self-start filter" id="filterForm">
             <div class = "bot-border p-3"><h5 class="fw-bold">Categories</h5>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="category1" name="category1" id="flexCheckDefault" ${param.get("category1").equals("category1")? "checked": ""}>
@@ -59,16 +59,13 @@
         <div class="content align-self-start flex-grow-1 d-flex flex-column">
             <div class="dropdown d-flex flex-row-reverse justify-content-between">
                 <form action="products" method="GET">
-                    <select class="form-select sort" aria-label="Default select example">
-                        <button type="submit">
-                            <option selected>Best match</option>
-                            <option value="1">Newest</option>
-                            <option value="2">Oldest</option>
-                            <option value="3">Price :low first</option>
-                            <option value="4">Price :high first</option>
-                            <option value="5">Most Popular</option>
-                        </button>
-
+                    <select class="form-select sort" aria-label="Default select example" id="myDropdown" onchange="showSelected()">
+                            <option ${param.sort == 'Best match'? 'selected': ''}>Best match</option>
+                            <option ${param.sort == 'Newest'? 'selected': ''}>Newest</option>
+                            <option ${param.sort == 'Oldest'? 'selected': ''}>Oldest</option>
+                            <option ${param.sort == 'Price :low first'? 'selected': ''}>Price :low first</option>
+                            <option ${param.sort == 'Price :high first'? 'selected': ''}>Price :high first</option>
+                            <option ${param.sort == 'Most Popular'? 'selected': ''}>Most Popular</option>
                     </select>
                 </form>
                 <div class="d-flex flex-column gap-2">

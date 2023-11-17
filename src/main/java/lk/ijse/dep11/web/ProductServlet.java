@@ -23,6 +23,8 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<ItemPrew> itemList = new ArrayList<>();
+        String sortmethod = "rating";
+        String order = "DESC";
         String category1 = (req.getParameter("category1")!=null)? "Electronics": "";
         String category2 = (req.getParameter("category2")!=null)? "Sports": "";
         String category3 = (req.getParameter("category3")!=null)? "Fashion": "";
@@ -30,7 +32,7 @@ public class ProductServlet extends HttpServlet {
         String category5 = (req.getParameter("category5")!=null)? "Kid's Items": "";
         String min_price = (req.getParameter("min-price").equals(""))? "0": req.getParameter("min-price");
         String max_price = (req.getParameter("max-price").equals(""))? "100000": req.getParameter("max-price");
-        System.out.println(req.getParameter("sort"));
+        String sort = (req.getParameter("sort")!=null)? req.getParameter("sort"): "";
          if((category1.equals(category2)) && (category1.equals(category3)) && (category1.equals(category4)) && (category1.equals(category5))){
              category1 = "Electronics";
              category2 ="Sports";
@@ -38,9 +40,16 @@ public class ProductServlet extends HttpServlet {
              category4="Home & Garden";
              category5="Kid's Items";
          }
+        System.out.println(sort);
+         if(sort.equals("Newest"))sortmethod = "date";
+        else if(sort.equals("Oldest")){sortmethod = "date";order = "ASC";}
+        else if(sort.equals("Price :low first")){sortmethod = "price";order = "ASC";}
+        else if(sort.equals("Price :high first")){sortmethod = "price";order = "DESC";}
+        else if(sort.equals("Most Popular")){sortmethod = "sold";order = "DESC";}
+
         BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("connectionpool");
         try( Connection connection = pool.getConnection()) {
-            PreparedStatement stm = connection.prepareStatement("SELECT * FROM item WHERE price < ? AND price > ? AND (category = ? OR category = ? OR category = ? OR category = ? OR category = ? )");
+            PreparedStatement stm = connection.prepareStatement("SELECT * FROM item WHERE price < ? AND price > ? AND (category = ? OR category = ? OR category = ? OR category = ? OR category = ? ) ORDER BY " + sortmethod +" " + order );
            stm.setString(1,max_price);
             stm.setString(2,min_price);
             stm.setString(3,category1);
@@ -48,6 +57,8 @@ public class ProductServlet extends HttpServlet {
             stm.setString(5,category3);
             stm.setString(6,category4);
             stm.setString(7,category5);
+
+            System.out.println(sortmethod);
             ResultSet rst = stm.executeQuery();
 
             while (rst.next()){

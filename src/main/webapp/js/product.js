@@ -1,5 +1,8 @@
 const tagconElm = document.querySelector('#tag1')
 const tagconElm2 = document.querySelector('#tag2')
+const optElm = document.querySelectorAll('.sort1')
+const btnElm = document.querySelector('button');
+const formElm =document.querySelector('#filterForm')
 
 
 // Log the URL to the console
@@ -26,11 +29,11 @@ if(urlParams.get('min-price') === '' && urlParams.get('max-price') === ''){
                     </div>`;
     tagconElm2.append(newElm);
 }const  closeElm  = document.querySelectorAll('.bi-x-lg')
-
+let urlSearchParams = new URLSearchParams(window.location.search);
 closeElm.forEach((e)=>{
     e.addEventListener('click',function (){
         let text = e.parentElement.children[0].textContent;
-        let urlSearchParams = new URLSearchParams(window.location.search);
+
         if(text==='Electronics'){
             urlSearchParams.delete('category1');
             window.history.replaceState({}, document.title, `${window.location.pathname}?${urlSearchParams}`);
@@ -60,4 +63,14 @@ closeElm.forEach((e)=>{
         window.location.href = window.location.href;
     });
 })
+let sortbyList =['Best match','Newest','Oldest','Price :low first','Price :high first','Most Popular']
+function showSelected() {
+
+    const dropdown = document.getElementById('myDropdown');
+    const selectedIndex = dropdown.selectedIndex;
+    urlSearchParams.set('sort', sortbyList[selectedIndex]);
+    window.history.replaceState({}, document.title, `${window.location.pathname}?${urlSearchParams}`);
+    window.location.href = window.location.href;
+}
+
 
