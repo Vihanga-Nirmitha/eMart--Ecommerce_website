@@ -22,3 +22,15 @@ main{
 .filter{
     width: 250px;
 }
+.tag{
+    padding: 8px 15px 3px 15px;
+    background-color: rgba(117,50,249,255);
+
+}
+.tag h6{
+    color: white;
+}
+.tag i:hover{
+    scale: 1.05;
+    color: #ea4335;
+}

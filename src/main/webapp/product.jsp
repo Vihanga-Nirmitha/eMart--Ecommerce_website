@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/product.css">
+    <script defer src="js/product.js" ></script>
 </head>
 <body>
 <%@include file="WEB-INF/partials/header.jsp"%>
@@ -70,6 +71,15 @@
 
                     </select>
                 </form>
+                <div class="d-flex flex-column gap-2">
+                    <div class="tag-container d-flex gap-3" id="tag1">
+
+                    </div>
+                    <div class="tag-container d-flex gap-3" id="tag2">
+
+                    </div>
+                </div>
+
             </div>
             <div class="container-md m-5">
                 <div class="row">

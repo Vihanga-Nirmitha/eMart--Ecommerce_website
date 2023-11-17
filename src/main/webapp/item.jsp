@@ -70,6 +70,7 @@
                 <div class="d-flex mt-5 mb-3 gap-3 align-items-center">
                     <label for="qty" class="form-label">Quantity: </label>
                    <input required pattern="^[0-9]+$" type="text" name="qty"class="form-control" id="qty"></span>
+                    <script src="./script.js" type="module"></script>
                     <h6>${preview.qty} Available / <span class="sold"> ${preview.sold} Sold</span></h6>
                 </div>
 
@@ -201,8 +202,8 @@
             <div class="tab-pane fade show active lh-lg pt-4" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">${preview.description}</div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                 <c:forEach var="feedback" items="${feedbackList}">
-                <div class="feedback-container mt-4 mb-1">
-                    <div class="d-flex gap-1">
+                <div class="feedback-container mt-4 mb-4">
+                    <div class="d-flex gap-1 align-items-center">
                         <i class="${feedback.rating >= 1? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
                         <i class="${feedback.rating >= 2? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
                         <i class="${feedback.rating >= 3? "bi bi-star-fill": "bi bi-star"} shine-star"></i>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter({"/index.jsp","/item","/products",""})
+@WebFilter({"/index.jsp","/item*","/products*"})
 public class SecurityFilter extends HttpFilter {
 
     @Override
