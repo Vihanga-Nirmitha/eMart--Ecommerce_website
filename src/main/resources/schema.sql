@@ -52,6 +52,6 @@ ALTER TABLE view ADD COLUMN cokieid VARCHAR(300) NOT NULL ;
 SELECT * FROM view WHERE userid = 'D00001';
 SELECT * FROM item as i INNER JOIN (SELECT date,itemid FROM view WHERE userid = 'D00001') as v on v.itemid = i.itemid ORDER BY v.date DESC ;
 
-INSERT INTO feedback (userid, itemid, comment, rating, date) VALUES ('D00002','3','Fast Delivery, recommended!' , '5', LOCALTIME);
+INSERT INTO feedback (userid, itemid, comment, rating, date) VALUES ('D00001','18','Not Good!' , '3', LOCALTIME);
 SELECT * FROM feedback WHERE itemid = '3';
 SELECT * FROM (SELECT * FROM feedback WHERE itemid = '3') as f INNER JOIN user as u on f.userid = u.userid;

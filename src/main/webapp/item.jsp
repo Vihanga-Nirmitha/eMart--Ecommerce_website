@@ -96,12 +96,12 @@
                     <div class="d-flex ">
                         <h1></h1><h3>/5</h3>
                     </div>
-                    <div class="d-flex fs-3 gap-1">
-                        <i class="bi bi-star-fill shine-star"></i>
-                        <i class="bi bi-star-fill shine-star"></i>
-                        <i class="bi bi-star-fill shine-star"></i>
-                        <i class="bi bi-star-fill shine-star"></i>
-                        <i class="bi bi-star-fill shine-star"></i>
+                    <div class="d-flex fs-3 gap-1" id="star-list">
+                        <i class="shine-star"></i>
+                        <i class="shine-star"></i>
+                        <i class="shine-star"></i>
+                        <i class="shine-star"></i>
+                        <i class="shine-star"></i>
                     </div>
                     <h6></h6>
 
@@ -200,106 +200,20 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active lh-lg pt-4" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">${preview.description}</div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                <div class="d-flex gap-5 feedback align-items-center">
-                    <div class="rating">
-                        <div class="d-flex ">
-                            <h1>4.5</h1><h3>/5</h3>
-                        </div>
-                        <div class="d-flex fs-3 gap-1">
-                            <i class="bi bi-star-fill shine-star"></i>
-                            <i class="bi bi-star-fill shine-star"></i>
-                            <i class="bi bi-star-fill shine-star"></i>
-                            <i class="bi bi-star-fill shine-star"></i>
-                            <i class="bi bi-star-fill shine-star"></i>
-                        </div>
-                        <h6>1020 Ratings</h6>
-
+                <c:forEach var="feedback" items="${feedbackList}">
+                <div class="feedback-container mt-4 mb-1">
+                    <div class="d-flex gap-1">
+                        <i class="${feedback.rating >= 1? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
+                        <i class="${feedback.rating >= 2? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
+                        <i class="${feedback.rating >= 3? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
+                        <i class="${feedback.rating >= 4? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
+                        <i class="${feedback.rating >= 5? "bi bi-star-fill": "bi bi-star"} shine-star"></i>
+                        <div class="ml-3"><h6>on ${feedback.date}</h6></div>
                     </div>
-                    <div>
-                        <div class="star-row d-flex gap-3 align-items-center" shine-star>
-                            <div class="d-flex gap-1">
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                            </div>
-                            <div class="bar">
-                                <div class="col-bar">
-
-                                </div>
-                            </div>
-                            <div class="mt-2"><h6> 12</h6></div>
-
-                        </div>
-                        <div class="star-row d-flex gap-3 align-items-center">
-                            <div class="d-flex gap-1">
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                            </div>
-                            <div class="bar">
-                                <div class="col-bar">
-
-                                </div>
-                            </div>
-                            <div class="mt-2"><h6> 12</h6></div>
-
-                        </div>
-                        <div class="star-row d-flex gap-3 align-items-center">
-                            <div class="d-flex gap-1">
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                            </div>
-                            <div class="bar">
-                                <div class="col-bar">
-
-                                </div>
-                            </div>
-                            <div class="mt-2"><h6> 12</h6></div>
-
-                        </div>
-                        <div class="star-row d-flex gap-3 align-items-center">
-                            <div class="d-flex gap-1">
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                            </div>
-                            <div class="bar">
-                                <div class="col-bar">
-
-                                </div>
-                            </div>
-                            <div class="mt-2"><h6> 12</h6></div>
-
-                        </div>
-                        <div class="star-row d-flex gap-3 align-items-center">
-                            <div class="d-flex gap-1">
-                                <i class="bi bi-star-fill shine-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                                <i class="bi bi-star-fill dark-star"></i>
-                            </div>
-                            <div class="bar">
-                                <div class="col-bar">
-
-                                </div>
-                            </div>
-                            <div class="mt-2"><h6> 12</h6></div>
-
-                        </div>
-                    </div>
-
+                    <div><h6>${feedback.username}</h6></div>
+                    <div class="mt-2"><h5>${feedback.comment}</h5></div>
                 </div>
-
+                </c:forEach>
             </div>
 
         </div>

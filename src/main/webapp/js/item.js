@@ -23,6 +23,8 @@ const newElm2 = document.createElement('div')
 const newElm3 = document.createElement('div')
 const newElm4 = document.createElement('div')
 const newElm5 = document.createElement('div')
+
+const iconElm = document.querySelectorAll('#star-list i' );
 let newElmlist = [newElm1,newElm2,newElm3,newElm4,newElm5];
 
 let total = 0;
@@ -44,7 +46,7 @@ h6Elm.forEach(function (e){
     total = total+ parseInt(e.innerHTML);
 });
 let ratelist = [rate5,rate4,rate3,rate2,rate1];
-let avg = total/count;
+let avg = parseFloat((total/count)).toFixed(1);
 avgElm.innerHTML=`${avg}`;
 totalElm.innerHTML = `${count} Ratings`;
 bar1Elm.innerHTML = `${rate5}`;
@@ -59,5 +61,24 @@ proglist.forEach(function (e){
     newElmlist[i].innerHTML = `<div class="col-bar progress-bar " style="width: ${(ratelist[i]*100)/count}%"></div>`;
     e.append(newElmlist[i]);
     i++;
+});
+let index2 = 0
+iconElm.forEach(function (e){
+    index2++;
+    if(index2 <= parseFloat((total/count))){
+        e.classList.add('bi');
+        e.classList.add('bi-star-fill');
+    }
+    else {
+        if(index2-(parseFloat((total/count)))<1){
+            e.classList.add('bi');
+            e.classList.add('bi-star-half');
+        }else {
+            e.classList.add('bi');
+            e.classList.add('bi-star');
+        }
+
+    }
+
 });
 

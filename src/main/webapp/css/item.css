@@ -62,11 +62,7 @@ overflow: hidden;
     height: 40px;
     border-radius: 24px;
 }
-.tab-border{
-    border-bottom: 1px solid black ;
-    border-left: 1px solid black ;
-    border-right: 1px solid black ;
-}
+
 .rating h3,.rating h6{
     color: rgba(85, 85, 85, 0.4);
 }
@@ -89,4 +85,19 @@ overflow: hidden;
 }
 .dark-star{
     color:rgba(152, 148, 148, 0.18);
+}
+.rating i{
+    overflow: hidden;
+}
+.half-star{
+    width: 10px;
+    height: 10px;
+    background-color: #faca51;
+}
+.feedback-container{
+    border-bottom: 1px solid #464545;
+}
+.tab-content h6{
+    font-size: 0.9rem;
+    color: rgba(85, 85, 85, 0.4);
 }
