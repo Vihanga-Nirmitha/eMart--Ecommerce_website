@@ -45,11 +45,11 @@ body{
     color: #bbb8b8;
 }
 .item h4{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .item h3{
     color: #f57224;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 .item h5{
     color: #bbb8b8;
@@ -59,7 +59,7 @@ body{
     gap: 5px;
 }
 .number-input{
-    margin-left: 60px;
+    margin-left: 10px;
 }
 .checkout-container{
     width: 350px;

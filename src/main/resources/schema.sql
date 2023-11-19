@@ -40,6 +40,14 @@ CREATE TABLE view(
         cokieid VARCHAR(300) NOT NULL,
         CONSTRAINT fk_item FOREIGN KEY (itemid) REFERENCES item (itemid)
 );
+CREATE TABLE cartitem(
+    cartitemid int PRIMARY KEY AUTO_INCREMENT,
+    userid VARCHAR(20) NOT NULL ,
+    itemid int NOT NULL ,
+    price DECIMAL(12,2) NOT NULL ,
+    qty int NOT NULL,
+    CONSTRAINT fk_user FOREIGN KEY (userid) REFERENCES user (userid)
+);
 INSERT INTO user (userid, username, password, first_name) VALUES ('D000002','vihanganirmitha200@gmail.com','aaaaa','vihanga');
 ALTER table user DROP COLUMN username;
 ALTER TABLE user ADD COLUMN username VARCHAR(100) NOT NULL ;
@@ -57,3 +65,5 @@ SELECT * FROM feedback WHERE itemid = '3';
 SELECT * FROM (SELECT * FROM feedback WHERE itemid = '3') as f INNER JOIN user as u on f.userid = u.userid;
 
 SELECT * FROM item ORDER BY price ASC ;
+SELECT * FROM cartitem WHERE itemid = '3' AND userid = 'D00001';
+SELECT i.itemid,i.price,i.image1,i.title,i.brand,i.model,c.qty  FROM item AS i INNER JOIN cartitem AS c on i.itemid = c.itemid WHERE c.userid = 'D00001'

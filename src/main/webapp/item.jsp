@@ -14,7 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/item.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/counter.css">
     <script defer src="js/item.js"></script>
+    <script defer src="js/counter.js"></script>
 
 </head>
 <body>
@@ -67,10 +69,16 @@
         <div class="d-flex flex-column rest">
 
                <div class="fw-bold bot-border mt-5"><h2><p>${preview.brand} ${preview.model} ${preview.title}</p></h2></div>
-                <div class="d-flex mt-5 mb-3 gap-3 align-items-center">
-                    <label for="qty" class="form-label">Quantity: </label>
-                   <input required pattern="^[0-9]+$" type="text" name="qty"class="form-control" id="qty"></span>
-                    <script src="./script.js" type="module"></script>
+                <div class="d-flex flex-row mt-5 mb-3 gap-5 align-items-center">
+                    <div class="number-input d-flex align-self-start">
+                        <div  class="button d-flex justify-content-center align-items-center pt-1">
+                            <h3>-</h3>
+                        </div>
+                        <input type="text" pattern="^[0-9]+/./d/d$" class="text-center count">
+                        <div class="button d-flex justify-content-center align-items-center pt-1">
+                            <h3>+</h3>
+                        </div>
+                    </div>
                     <h6>${preview.qty} Available / <span class="sold"> ${preview.sold} Sold</span></h6>
                 </div>
 
@@ -83,7 +91,13 @@
                 </div>
             <div class="d-flex flex-column align-items-center gap-3 mt-5 pb-4 btn-list">
                 <button class="btn btn-primary" type="button">Buy it Now</button>
-                <button class="btn" type="button">Add to Cart</button>
+                <form action="cart" method="post" id="cartform">
+                    <input type="hidden" id="itemid" name="itemid" value="${param.itemid}">
+                    <input type="hidden" id="qty" name="qty" value="1">
+                    <input type="hidden" id="price" name="price" value="${preview.price}">
+                    <button id="cart" class="btn" type="submit">Add to Cart</button>
+                </form>
+
                 <button class="btn btn-outline-info" type="button"><i class="bi bi-heart"></i> Add to Watch List</button>
             </div>
             <div class="invisible position-absolute get-rating">
