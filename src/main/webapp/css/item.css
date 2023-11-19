@@ -1,13 +1,17 @@
 *{
     box-sizing: border-box;
 }
-body{
+body {
     font-family: 'Nunito', sans-serif;
+}
+main{
+    background-color: white;
 }
 .top-main{
     justify-content: center;
     padding-top: 50px;
     width:  1200px;
+
 }
 .image-container{
     display: flex;

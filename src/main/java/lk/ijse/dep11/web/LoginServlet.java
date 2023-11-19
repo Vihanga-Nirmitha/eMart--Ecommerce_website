@@ -16,6 +16,7 @@ import java.sql.SQLException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
     }
 
@@ -35,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                     HttpSession session = req.getSession();
                     if(remember!=null){
                         String header = resp.getHeader("Set-Cookie");
-                        header += "; Max-Age="+(60*60);
+                        header += "; Max-Age=3600";
                         resp.setHeader("Set-Cookie",header);
                     }
                     Cookie shopzycokie = new Cookie("shopzy", "shopzy");

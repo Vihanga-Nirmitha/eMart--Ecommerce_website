@@ -12,28 +12,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/product.css">
+    <script defer src="js/counter.js"></script>
     <style>
-        .tag{
-            padding: 8px 15px 3px 15px;
-            background-color: rgba(117, 50, 249, 0.53);
+            .number-input{
+                height: 30px;
+                width: 100px;
 
-        }
-        .tag h6{
-            color: white;
-        }
-        .tag i:hover{
-            scale: 1.05;
-            color: #ea4335;
-        }
+            }
+            #count{
+                width: 40px;
+            }
+            .button{
+                width: 30px;
+                height: 30px;
+                background-color: #eff0f5;
+            }
+            .button:hover{
+                background-color: #bdbbbb;
+                cursor: pointer;
+            }
+            #btn-minus{
+                /*border-top-left-radius: 5px;*/
+                /*border-bottom-left-radius: 5px;*/
+            }
+            #btn-plus{
+            /*    border-top-right-radius: 5px;*/
+            /*    border-bottom-right-radius: 5px;*/
+            /*}*/}
+            #count{
+                border: none;
+                outline: none;
+
+            }
+            .button h3{
+             color: #bbb8b8;
+                padding: 10px;
+                font-weight: lighter;
+                user-select: none;
+            }
+            .button h3:hover{
+                color: white;
+            }
     </style>
 </head>
 <body>
-<div class="tag-container d-flex gap-3">
-    <div class="tag d-flex gap-2 rounded-pill">
-        <h6>tag</h6>
-        <i class="bi bi-x-lg"></i>
+    <div class="number-input d-flex">
+        <div id="btn-minus" class="button d-flex justify-content-center align-items-center pt-1">
+                <h3>-</h3>
+        </div>
+            <input id="count" type="text" class="text-center">
+        <div  id="btn-plus" class="button d-flex justify-content-center align-items-center pt-1">
+            <h3>+</h3>
+        </div>
     </div>
-</div>
 </body>
 </html>
