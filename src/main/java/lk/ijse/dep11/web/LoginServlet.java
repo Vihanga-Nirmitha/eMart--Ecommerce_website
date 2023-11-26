@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
                         resp.setHeader("Set-Cookie",header);
                     }
                     Cookie shopzycokie = new Cookie("shopzy", "shopzy");
-                    session.setMaxInactiveInterval(30);
+                    session.setMaxInactiveInterval(3000);
                     session.setAttribute("userid",rst.getString("userid"));
                     resp.sendRedirect(req.getContextPath());
 

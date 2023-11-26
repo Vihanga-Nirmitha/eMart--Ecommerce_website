@@ -3,7 +3,7 @@ const itemElm  = document.querySelectorAll('.number-input')
 
 
 itemElm.forEach(function (e){
-    e.children[1].value = '1';
+    // e.children[1].value = '1';
     let value = e.children[1].value;
 
 

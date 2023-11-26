@@ -66,4 +66,8 @@ SELECT * FROM (SELECT * FROM feedback WHERE itemid = '3') as f INNER JOIN user a
 
 SELECT * FROM item ORDER BY price ASC ;
 SELECT * FROM cartitem WHERE itemid = '3' AND userid = 'D00001';
-SELECT i.itemid,i.price,i.image1,i.title,i.brand,i.model,c.qty  FROM item AS i INNER JOIN cartitem AS c on i.itemid = c.itemid WHERE c.userid = 'D00001'
+SELECT i.itemid,i.price,i.image1,i.title,i.brand,i.model,c.qty  FROM item AS i INNER JOIN cartitem AS c on i.itemid = c.itemid WHERE c.userid = 'D00001';
+UPDATE cartitem SET qty = 5 WHERE userid = 'D00001' AND itemid = '20';
+SELECT i.itemid,i.price,i.image1,i.title,i.brand,i.model,c.qty  FROM item AS i INNER JOIN cartitem AS c on i.itemid = c.itemid WHERE c.userid = 'D00001';
+SELECT * FROM item WHERE title LIKE '%large%'  OR model LIKE '%large%' OR brand LIKE '%large%' OR description LIKE '%large%';
+DELETE FROM cartitem WHERE itemid = 2 AND userid = 'D00001'

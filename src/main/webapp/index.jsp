@@ -25,7 +25,7 @@
             <a class="text-decoration-none link-dark" href="/app/products?category1=category1&max-price=&min-price=">
                 <div class="category d-flex">
                     <div class="image-container">
-                        <img src="image/electronic.png" alt="" width="140px">
+                        <img src="image/electronics1.png" alt="" width="100px">
                     </div>
                     <div><h5>Electronics</h5></div>
                 </div>
@@ -33,7 +33,7 @@
             <a class="text-decoration-none link-dark" href="/app/products?category2=category2&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
-                    <img src="image/vr.jpg" alt="" width="140px">
+                    <img src="image/sport1.png" alt="" width="100px">
                 </div>
                 <div><h5>Sports</h5></div>
             </div>
@@ -41,7 +41,7 @@
             <a class="text-decoration-none link-dark" href="/app/products?category3=category3&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
-                    <img src="image/smart-watch.jpg" alt="" width="140px">
+                    <img src="image/fashon1.png" alt="" width="100px">
                 </div>
                 <div><h5>Fashion</h5></div>
             </div>
@@ -49,7 +49,7 @@
             <a class="text-decoration-none link-dark" href="/app/products?category4=category4&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
-                    <img src="image/vr.jpg" alt="" width="140px">
+                    <img src="image/garden1.png" alt="" width="100px">
                 </div>
                 <div><h5>Home & Garden</h5></div>
             </div>
@@ -57,7 +57,7 @@
             <a class="text-decoration-none link-dark" href="/app/products?category5=category5&max-price=&min-price=">
             <div class="category d-flex">
                 <div class="image-container">
-                    <img src="image/earbuds.jpg" alt="" width="140px">
+                    <img src="image/toy1.png" alt="" width="100px">
                 </div>
                 <h5>Kid's Item</h5>
             </div>
