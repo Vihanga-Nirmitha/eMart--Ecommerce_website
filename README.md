@@ -1,4 +1,4 @@
-# My App
+# eMart
 # Version
 0.1.0
 ### License
